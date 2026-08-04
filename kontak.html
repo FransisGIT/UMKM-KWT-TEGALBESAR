@@ -64,10 +64,34 @@
             background: transparent !important;
             border: none !important;
         }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease;
+        }
+        #mobile-menu.open {
+            transform: translateX(0) !important;
+        }
+        #mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Overlay -->
+    <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
+
     <!-- HEADER -->
     <header id="navbar" class="sticky top-0 z-50 border-b"
         style="position: sticky !important; top: 0 !important; z-index: 9999 !important; background-color: rgb(253, 246, 233) !important; border-color: rgba(200,150,30,0.15) !important;">
@@ -75,7 +99,7 @@
             <div class="container">
                 <div class="grid lg:grid-cols-3 grid-cols-2 items-center mx-4 lg:mx-7">
                     <div class="flex items-center">
-                        <button class="lg:hidden block mr-3" data-hs-overlay="#mobile-menu"><i data-lucide="menu"
+                        <button class="lg:hidden block mr-3" onclick="openMobileMenu()"><i data-lucide="menu"
                                 class="w-6 h-6" style="color:var(--jamu-warm);"></i></button>
                         <a href="index.html" class="flex items-center gap-2">
                             <span
@@ -112,9 +136,8 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 left-0 transition-all transform h-full max-w-[280px] w-full border-r"
-        style="z-index:10000!important;background-color:var(--jamu-cream)!important;border-color:rgba(200,150,30,0.15)!important;"
-        tabindex="-1">
+        class="fixed top-0 left-0 h-full max-w-[280px] w-full border-r"
+        style="z-index:10000!important;background-color:var(--jamu-cream)!important;border-color:rgba(200,150,30,0.15)!important;transform:translateX(-100%);">
         <div class="flex items-center justify-between px-5 h-16 border-b"
             style="border-color:rgba(200,150,30,0.15)!important;">
             <a href="index.html" class="flex items-center gap-2">
@@ -123,8 +146,7 @@
                 <span class="font-bold" style="color:var(--jamu-primary);">KWT Jamu</span>
             </a>
             <button class="p-2 rounded-lg transition" style="color:var(--jamu-warm);"
-                onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
-                onmouseout="this.style.backgroundColor='transparent'" data-hs-overlay="#mobile-menu"><i data-lucide="x"
+                onclick="closeMobileMenu()"><i data-lucide="x"
                     class="w-5 h-5"></i></button>
         </div>
         <nav class="p-4">
@@ -177,7 +199,7 @@
                         <div>
                             <h3 class="font-bold text-base mb-1" style="color:var(--jamu-brown);">WhatsApp</h3>
                             <p class="text-sm mb-2" style="color:var(--jamu-warm);">Chat langsung dengan tim kami</p>
-                            <a href="https://wa.me/628591840759895" target="_blank"
+                            <a href="https://wa.me/62859184075985" target="_blank"
                                 class="text-sm font-semibold inline-flex items-center gap-1"
                                 style="color:var(--jamu-primary);">
                                 +62 859-1840-7598 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
@@ -323,7 +345,7 @@
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/628591840759895" target="_blank"
+    <a href="https://wa.me/62859184075985" target="_blank"
         class="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
         style="z-index:9998!important;background-color:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.4);">
         <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
@@ -336,6 +358,19 @@
     <script>lucide.createIcons();</script>
 
     <script>
+        // Mobile Menu
+        function openMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('open');
+            document.getElementById('mobile-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('open');
+            document.getElementById('mobile-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Leaflet Map
         // Initialize Leaflet Map
         var map = L.map('map', { scrollWheelZoom: false }).setView([-8.203806, 113.702636], 15);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -367,7 +402,7 @@
                 return;
             }
 
-            const waNumber = '628591840759895';
+            const waNumber = '62859184075985';
             const text = `Halo, saya ingin menghubungi KWT Jamu.%0A%0ANama: ${encodeURIComponent(name)}%0ATelepon: ${encodeURIComponent(phone)}%0APesan: ${encodeURIComponent(message)}`;
             const waUrl = `https://wa.me/${waNumber}?text=${text}`;
 

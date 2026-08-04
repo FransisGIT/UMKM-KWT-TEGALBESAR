@@ -58,10 +58,34 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease;
+        }
+        #mobile-menu.open {
+            transform: translateX(0) !important;
+        }
+        #mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Overlay -->
+    <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
+
     <!-- HEADER -->
     <header id="navbar" class="sticky top-0 z-50 border-b"
         style="position: sticky !important; top: 0 !important; z-index: 9999 !important; background-color: rgb(253, 246, 233) !important; border-color: rgba(200,150,30,0.15) !important;">
@@ -69,7 +93,7 @@
             <div class="container">
                 <div class="grid lg:grid-cols-3 grid-cols-2 items-center mx-4 lg:mx-7">
                     <div class="flex items-center">
-                        <button class="lg:hidden block mr-3" data-hs-overlay="#mobile-menu"><i data-lucide="menu"
+                        <button class="lg:hidden block mr-3" onclick="openMobileMenu()"><i data-lucide="menu"
                                 class="w-6 h-6" style="color:var(--jamu-warm);"></i></button>
                         <a href="index.html" class="flex items-center gap-2">
                             <span
@@ -106,9 +130,8 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 left-0 transition-all transform h-full max-w-[280px] w-full border-r"
-        style="z-index:10000!important;background-color:var(--jamu-cream)!important;border-color:rgba(200,150,30,0.15)!important;"
-        tabindex="-1">
+        class="fixed top-0 left-0 h-full max-w-[280px] w-full border-r"
+        style="z-index:10000!important;background-color:var(--jamu-cream)!important;border-color:rgba(200,150,30,0.15)!important;transform:translateX(-100%);">
         <div class="flex items-center justify-between px-5 h-16 border-b"
             style="border-color:rgba(200,150,30,0.15)!important;">
             <a href="index.html" class="flex items-center gap-2">
@@ -117,8 +140,7 @@
                 <span class="font-bold" style="color:var(--jamu-primary);">KWT Jamu</span>
             </a>
             <button class="p-2 rounded-lg transition" style="color:var(--jamu-warm);"
-                onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
-                onmouseout="this.style.backgroundColor='transparent'" data-hs-overlay="#mobile-menu"><i data-lucide="x"
+                onclick="closeMobileMenu()"><i data-lucide="x"
                     class="w-5 h-5"></i></button>
         </div>
         <nav class="p-4">
@@ -160,22 +182,22 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-10">
             <!-- Filter Buttons -->
             <div class="flex flex-wrap justify-center gap-3 mb-10" data-aos="fade-up" data-aos-delay="100">
-                <button onclick="filterProducts('all')"
+                <button onclick="filterProducts(this, 'all')"
                     class="filter-btn active px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
                     style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Semua</button>
-                <button onclick="filterProducts('tradisional')"
+                <button onclick="filterProducts(this, 'tradisional')"
                     class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
                     style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
                     Tradisional</button>
-                <button onclick="filterProducts('serbuk')"
+                <button onclick="filterProducts(this, 'serbuk')"
                     class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
                     style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
                     Serbuk</button>
-                <button onclick="filterProducts('kapsul')"
+                <button onclick="filterProducts(this, 'kapsul')"
                     class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
                     style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
                     Kapsul</button>
-                <button onclick="filterProducts('rempah')"
+                <button onclick="filterProducts(this, 'rempah')"
                     class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
                     style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Rempah</button>
             </div>
@@ -202,7 +224,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Asam*%20(Rp%208.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Asam*%20(Rp%208.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -229,7 +251,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Beras%20Kencur*%20(Rp%207.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Beras%20Kencur*%20(Rp%207.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -253,7 +275,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Wangi*%20(Rp%209.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Wangi*%20(Rp%209.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -277,7 +299,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Sinom*%20(Rp%207.500).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Sinom*%20(Rp%207.500).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -304,7 +326,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">200ml</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jamu%20Pahitan*%20(Rp%2010.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jamu%20Pahitan*%20(Rp%2010.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -331,7 +353,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Kunyit*%20(Rp%2025.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Kunyit*%20(Rp%2025.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -355,7 +377,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Jahe*%20(Rp%2030.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Jahe*%20(Rp%2030.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -382,7 +404,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">60 kapsul</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Kunyit*%20(Rp%2045.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Kunyit*%20(Rp%2045.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -406,7 +428,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">30 kapsul</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Madu%20Propolis*%20(Rp%2055.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Madu%20Propolis*%20(Rp%2055.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -433,7 +455,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">500g</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Merah%20Segar*%20(Rp%2035.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Merah%20Segar*%20(Rp%2035.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -457,7 +479,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Bubuk*%20(Rp%2020.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Bubuk*%20(Rp%2020.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -481,7 +503,7 @@
                             <span class="text-xs px-3 py-1 rounded-full"
                                 style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">500g</span>
                         </div>
-                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Lengkuas%20Segar*%20(Rp%2025.000).%20Apakah%20ready%3F"
+                        <a href="https://wa.me/62859184075985?  text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Lengkuas%20Segar*%20(Rp%2025.000).%20Apakah%20ready%3F"
                             target="_blank"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
                             style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
@@ -530,7 +552,7 @@
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/628591840759895" target="_blank"
+    <a href="https://wa.me/62859184075985?  " target="_blank"
         class="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
         style="z-index:9998!important;background-color:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.4);">
         <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
@@ -542,14 +564,26 @@
     <script>lucide.createIcons();</script>
 
     <script>
-        function filterProducts(category) {
-            // Update active button
-            document                n.classList.remo                    rEach(card => {
-                i                                 rwards' ;
-                  } else {
-                  none';
+        // Mobile Menu
+        function openMobileMenu            mentById('mobile-menu').classList.add('            ElementById('mobile-overlay').classList            nt.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+                           document.getEleme n tById('mobil                       document.body.s t yle.overflow = '';
+        }
+
+        // Product Filter
+              electorAll('.filter-btn'). f orEach(funct            move('active');
+              });
+            btn.classList.add('active');
+
+                 {
+                if (cat e gory === 'al            ) {
+                    c a rd.style.display = '';
+                    card.style.animation = 'fadeIn 0.4s ease forwards';
+                } else {
+                    card.style.dis p lay = 'none';
                 }
-             });
+            });
         }
     </script>
     <style>

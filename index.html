@@ -151,10 +151,34 @@
         .section-alt {
             background: linear-gradient(180deg, var(--jamu-cream) 0%, #f0e6d3 100%);
         }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease;
+        }
+        #mobile-menu.open {
+            transform: translateX(0) !important;
+        }
+        #mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Overlay -->
+    <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
+
     <!-- ========== HEADER ========== -->
     <header id="navbar" class="sticky top-0 z-50 border-b"
         style="position: sticky !important; top: 0 !important; z-index: 9999 !important; background-color: rgb(253, 246, 233) !important; border-color: rgba(200,150,30,0.15) !important;">
@@ -162,7 +186,7 @@
             <div class="container">
                 <div class="grid lg:grid-cols-3 grid-cols-2 items-center mx-4 lg:mx-7">
                     <div class="flex items-center">
-                        <button class="lg:hidden block mr-3" data-hs-overlay="#mobile-menu">
+                        <button class="lg:hidden block mr-3" onclick="openMobileMenu()">
                             <i data-lucide="menu" class="w-6 h-6" style="color: var(--jamu-warm);"></i>
                         </button>
                         <a href="/" class="flex items-center gap-2">
@@ -205,14 +229,14 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 left-0 transition-all transform h-full max-w-[280px] w-full border-r"
-        style="z-index: 10000 !important; background-color: var(--jamu-cream) !important; border-color: rgba(200,150,30,0.15) !important;" tabindex="-1">
+        class="fixed top-0 left-0 h-full max-w-[280px] w-full border-r"
+        style="z-index: 10000 !important; background-color: var(--jamu-cream) !important; border-color: rgba(200,150,30,0.15) !important; transform: translateX(-100%);">
         <div class="flex items-center justify-between px-5 h-16 border-b" style="border-color: rgba(200,150,30,0.15) !important;">
             <a href="/" class="flex items-center gap-2">
                 <span class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs" style="background-color: var(--jamu-primary);">KW</span>
                 <span class="font-bold" style="color: var(--jamu-primary);">KWT Jamu</span>
             </a>
-            <button class="p-2 rounded-lg hover:bg-default-100 transition" data-hs-overlay="#mobile-menu"><i
+            <button class="p-2 rounded-lg hover:bg-default-100 transition" onclick="closeMobileMenu()"><i
                     data-lucide="x" class="w-5 h-5"></i></button>
         </div>
         <nav class="p-4">
@@ -296,17 +320,6 @@
                             <div>
                                 <p class="text-[10px] uppercase tracking-wider" style="color: var(--jamu-warm);">Dijamin</p>
                                 <p class="text-sm font-bold" style="color: var(--jamu-brown);">100% Alami</p>
-                            </div>
-                        </div>
-                        <div class="absolute -top-3 -right-3 lg:-right-5 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3"
-                            data-aos="fade-up" data-aos-delay="800">
-                            <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                                  style="background-color: rgba(200,150,30,0.12);">
-                                <i data-lucide="award" class="w-5 h-5" style="color: var(--jamu-accent);"></i>
-                            </span>
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider" style="color: var(--jamu-warm);">Sertifikat</p>
-                                <p class="text-sm font-bold" style="color: var(--jamu-brown);">BPOM & Halal</p>
                             </div>
                         </div>
                     </div>
@@ -544,7 +557,7 @@
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/628591840759895" target="_blank" rel="noopener noreferrer"
+    <a href="https://wa.me/62859184075985" target="_blank" rel="noopener noreferrer"
         class="fixed bottom-10 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
         style="z-index: 9998 !important; background-color: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4);">
         <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
@@ -566,6 +579,18 @@
         });</script>
 
     <script>
+            // Mobile Menu
+            function openMobileMenu() {
+                document.getElementById('mobile-menu').classList.add('open');
+                document.getElementById('mobile-overlay').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMobileMenu() {
+                document.getElementById('mobile-menu').classList.remove('open');
+                document.getElementById('mobile-overlay').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
         const isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
 
         // Hero Swiper
