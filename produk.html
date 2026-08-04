@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <title>Semua Produk — Jamu KWT Nusantara</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/theme-c9540983.css">
+    <link rel="stylesheet" href="assets/css/tailwind-output.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --jamu-primary: #5a7247;
+            --jamu-primary-dark: #3d5a30;
+            --jamu-accent: #c8961e;
+            --jamu-accent-light: #e8c55a;
+            --jamu-warm: #8b5e3c;
+            --jamu-warm-dark: #5c3a22;
+            --jamu-cream: #fdf6e9;
+            --jamu-brown: #3e2415;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--jamu-cream);
+            color: var(--jamu-brown);
+        }
+
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(62, 36, 21, 0.15);
+        }
+
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--jamu-primary) !important;
+            color: white !important;
+            border-color: var(--jamu-primary) !important;
+        }
+
+        .hero-page {
+            background: linear-gradient(135deg, #f5eddf 0%, #fdf6e9 50%, #e8dcc8 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header id="navbar" class="sticky top-0 z-50 border-b"
+        style="position: sticky !important; top: 0 !important; z-index: 9999 !important; background-color: rgb(253, 246, 233) !important; border-color: rgba(200,150,30,0.15) !important;">
+        <div class="lg:h-[72px] h-14 flex items-center">
+            <div class="container">
+                <div class="grid lg:grid-cols-3 grid-cols-2 items-center mx-4 lg:mx-7">
+                    <div class="flex items-center">
+                        <button class="lg:hidden block mr-3" data-hs-overlay="#mobile-menu"><i data-lucide="menu"
+                                class="w-6 h-6" style="color:var(--jamu-warm);"></i></button>
+                        <a href="index.html" class="flex items-center gap-2">
+                            <span
+                                class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm"
+                                style="background-color:var(--jamu-primary);">KW</span>
+                            <span class="hidden sm:block text-lg font-bold" style="color:var(--jamu-primary);">KWT
+                                Jamu</span>
+                        </a>
+                    </div>
+                    <ul class="hidden lg:flex items-center justify-center gap-1">
+                        <li><a class="inline-flex items-center text-sm font-medium py-2 px-4 rounded-full transition-all duration-300"
+                                style="color:var(--jamu-warm-dark);"
+                                onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
+                                onmouseout="this.style.backgroundColor='transparent'" href="index.html">Home</a></li>
+                        <li><a class="inline-flex items-center text-sm font-semibold py-2 px-4 rounded-full"
+                                style="color:var(--jamu-primary);background-color:rgba(90,114,71,0.1);"
+                                href="produk.html">Produk</a></li>
+                        <li><a class="inline-flex items-center text-sm font-medium py-2 px-4 rounded-full transition-all duration-300"
+                                style="color:var(--jamu-warm-dark);"
+                                onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
+                                onmouseout="this.style.backgroundColor='transparent'" href="kontak.html">Kontak</a></li>
+                    </ul>
+                    <div class="flex justify-end">
+                        <a href="kontak.html"
+                            class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:var(--jamu-primary);box-shadow:0 4px 14px rgba(90,114,71,0.3);">
+                            <i data-lucide="phone" class="w-4 h-4"></i> Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 left-0 transition-all transform h-full max-w-[280px] w-full border-r"
+        style="z-index:10000!important;background-color:var(--jamu-cream)!important;border-color:rgba(200,150,30,0.15)!important;"
+        tabindex="-1">
+        <div class="flex items-center justify-between px-5 h-16 border-b"
+            style="border-color:rgba(200,150,30,0.15)!important;">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs"
+                    style="background-color:var(--jamu-primary);">KW</span>
+                <span class="font-bold" style="color:var(--jamu-primary);">KWT Jamu</span>
+            </a>
+            <button class="p-2 rounded-lg transition" style="color:var(--jamu-warm);"
+                onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
+                onmouseout="this.style.backgroundColor='transparent'" data-hs-overlay="#mobile-menu"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <nav class="p-4">
+            <ul class="space-y-1">
+                <li><a class="flex items-center gap-3 py-3 px-4 text-sm rounded-xl transition"
+                        style="color:var(--jamu-warm-dark);"
+                        onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
+                        onmouseout="this.style.backgroundColor='transparent'" href="index.html"><i data-lucide="home"
+                            class="w-4 h-4"></i> Home</a></li>
+                <li><a class="flex items-center gap-3 py-3 px-4 text-sm font-semibold rounded-xl"
+                        style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);" href="produk.html"><i
+                            data-lucide="grid-3x3" class="w-4 h-4"></i> Produk</a></li>
+                <li><a class="flex items-center gap-3 py-3 px-4 text-sm rounded-xl transition"
+                        style="color:var(--jamu-warm-dark);"
+                        onmouseover="this.style.backgroundColor='rgba(200,150,30,0.08)'"
+                        onmouseout="this.style.backgroundColor='transparent'" href="kontak.html"><i data-lucide="phone"
+                            class="w-4 h-4"></i> Hubungi Kami</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- HERO PAGE -->
+    <section class="hero-page py-16 text-center">
+        <div class="container mx-auto px-4" data-aos="fade-down" data-aos-duration="800">
+            <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-4"
+                style="background-color:rgba(90,114,71,0.12);color:var(--jamu-primary);">
+                <i data-lucide="package" class="w-3.5 h-3.5"></i> Katalog Lengkap
+            </span>
+            <h1 class="text-3xl lg:text-5xl font-extrabold mb-4" style="color:var(--jamu-brown);">Semua Produk Jamu</h1>
+            <p class="max-w-lg mx-auto" style="color:var(--jamu-warm);">Temukan berbagai pilihan jamu tradisional
+                berkualitas dari bahan alami pilihan</p>
+            <div class="mt-4 mx-auto w-16 h-1 rounded-full" style="background-color:var(--jamu-accent);"></div>
+        </div>
+    </section>
+
+    <!-- FILTER & PRODUCTS -->
+    <section class="py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-10">
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10" data-aos="fade-up" data-aos-delay="100">
+                <button onclick="filterProducts('all')"
+                    class="filter-btn active px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
+                    style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Semua</button>
+                <button onclick="filterProducts('tradisional')"
+                    class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
+                    style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
+                    Tradisional</button>
+                <button onclick="filterProducts('serbuk')"
+                    class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
+                    style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
+                    Serbuk</button>
+                <button onclick="filterProducts('kapsul')"
+                    class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
+                    style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Jamu
+                    Kapsul</button>
+                <button onclick="filterProducts('rempah')"
+                    class="filter-btn px-5 py-2.5 rounded-full border text-sm font-semibold transition-all"
+                    style="border-color:rgba(200,150,30,0.3);color:var(--jamu-warm-dark);background-color:white;">Rempah</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productsGrid">
+
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="tradisional"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/fef3c7/92400e?text=Kunyit+Asam" alt="Kunyit Asam"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-primary);">Populer</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Kunyit Asam</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Menyegarkan tubuh, melancarkan haid,
+                            antioksidan alami</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 8.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Asam*%20(Rp%208.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="tradisional"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/d4a373/ffffff?text=Beras+Kencur" alt="Beras Kencur"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-accent);">Best Seller</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Beras Kencur</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Menghilangkan pegal linu, menyegarkan
+                            badan setelah bekerja</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 7.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Beras%20Kencur*%20(Rp%207.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="tradisional"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/e9c46a/264653?text=Jahe+Wangi" alt="Jahe Wangi"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Jahe Wangi</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Menghangatkan tubuh, meredakan masuk
+                            angin & mual</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 9.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Wangi*%20(Rp%209.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="tradisional"
+                    data-aos="fade-up" data-aos-delay="250">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/2a9d8f/ffffff?text=Sinom" alt="Sinom"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Sinom</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Menyegarkan, meredakan panas dalam &
+                            sariawan</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 7.500</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">250ml</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Sinom*%20(Rp%207.500).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="tradisional"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/8b5e3c/fdf6e9?text=Pahitan" alt="Pahitan"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-warm);"> Tradisional</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Jamu Pahitan</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Cuci darah, mengatasi gatal-gatal &
+                            menurunkan kolesterol</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 10.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">200ml</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jamu%20Pahitan*%20(Rp%2010.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="serbuk"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/fef3c7/5c3a22?text=Serbuk+Kunyit" alt="Serbuk Kunyit"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-primary);">Praktis</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Serbuk Kunyit</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Tinggal seduh air panas, praktis diminum
+                            kapan saja</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 25.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Kunyit*%20(Rp%2025.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="serbuk"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/d4a373/3e2415?text=Serbuk+Jahe" alt="Serbuk Jahe"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Serbuk Jahe</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Menghangatkan tubuh, cocok untuk cuaca
+                            dingin</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 30.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Serbuk%20Jahe*%20(Rp%2030.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="kapsul"
+                    data-aos="fade-up" data-aos-delay="250">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/e8c55a/3e2415?text=Kapsul+Kunyit" alt="Kapsul Kunyit"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-accent);">Modern</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Kapsul Kunyit</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Praktis untuk gaya hidup aktif,
+                            antioksidan tinggi</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 45.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">60 kapsul</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Kunyit*%20(Rp%2045.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="kapsul"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/264653/fef3c7?text=Kapsul+Madu" alt="Kapsul Madu"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Kapsul Madu Propolis</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Meningkatkan imunitas, kaya antioksidan
+                            alami</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 55.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">30 kapsul</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kapsul%20Madu%20Propolis*%20(Rp%2055.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="rempah"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/5c3a22/e8c55a?text=Jahe+Segar" alt="Jahe Segar"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <span
+                            class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white"
+                            style="background-color:var(--jamu-warm);">Segar</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Jahe Merah Segar</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Jahe merah pilihan, langsung dari kebun
+                            petani</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 35.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">500g</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Jahe%20Merah%20Segar*%20(Rp%2035.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="rempah"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/c8961e/3e2415?text=Kunyit+Bubuk" alt="Kunyit Bubuk"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Kunyit Bubuk</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Kunyit murni dikeringkan & ditumbuk
+                            halus</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 20.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">100g</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Kunyit%20Bubuk*%20(Rp%2020.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="rempah"
+                    data-aos="fade-up" data-aos-delay="250">
+                    <div class="relative aspect-square overflow-hidden">
+                        <img src="https://placehold.co/800x800/3d5a30/fef3c7?text=Lengkuas" alt="Lengkuas"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-1" style="color:var(--jamu-brown);">Lengkuas Segar</h3>
+                        <p class="text-sm mb-3" style="color:var(--jamu-warm);">Rempah berkhasiat untuk jamu & masakan
+                            tradisional</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xl font-extrabold" style="color:var(--jamu-primary);">Rp 25.000</span>
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color:rgba(90,114,71,0.1);color:var(--jamu-primary);">500g</span>
+                        </div>
+                        <a href="https://wa.me/628591840759895?text=Halo%20KWT%20Jamu%2C%20saya%20ingin%20memesan%20*Lengkuas%20Segar*%20(Rp%2025.000).%20Apakah%20ready%3F"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-white text-sm font-semibold transition-all duration-300"
+                            style="background-color:#25D366;" onmouseover="this.style.backgroundColor='#1ebe57'"
+                            onmouseout="this.style.backgroundColor='#25D366'"><i
+                                class="fa-brands fa-whatsapp text-base"></i> Beli</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-white mt-8" style="background-color: var(--jamu-brown);">
+        <div class="container px-4 sm:px-6 lg:px-10 py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs"
+                        style="background-color: var(--jamu-primary);">KW</span>
+                    <span class="font-semibold">KWT Nusantara</span>
+                </div>
+                <p class="text-white/40 text-xs text-center">&copy;
+                    <script>document.write(new Date().getFullYear())</script> KWT Jamu. Made with 💖by Fransisco.
+                </p>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center transition"
+                        style="background-color: rgba(255,255,255,0.1);"
+                        onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center transition"
+                        style="background-color: rgba(255,255,255,0.1);"
+                        onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center transition"
+                        style="background-color: rgba(255,255,255,0.1);"
+                        onmouseover="this.style.backgroundColor='rgba(255,255,255,0.2)'"
+                        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">
+                        <i class="fa-brands fa-tiktok text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/628591840759895" target="_blank"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+        style="z-index:9998!important;background-color:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.4);">
+        <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script>
+    <script>AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic', offset: 50 });</script>
+    <script>lucide.createIcons();</script>
+
+    <script>
+        function filterProducts(category) {
+            // Update active button
+            document                forEach(btn => btn.classList.remo.target.classList.add('active'); document.querySelectorAll('[data-category]').forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = '';
+                card.style.animation = 'fadeIn 0.4s ease forwards';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+
+</html>
