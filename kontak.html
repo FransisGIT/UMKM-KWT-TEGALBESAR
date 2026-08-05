@@ -358,19 +358,19 @@
     <script>lucide.createIcons();</script>
 
     <script>
-        // Mobile Menu
-        function openMobileMenu() {
-            document.getElementById('mobile-menu').classList.add('open');
-            document.getElementById('mobile-overlay').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeMobileMenu() {
-            document.getElementById('mobile-menu').classList.remove('open');
-            document.getElementById('mobile-overlay').classList.remove('open');
-            document.body.style.overflow = '';
-        }
+                // Mobile Menu
+                function openMobileMenu() {
+                    document.getElementById('mobile-menu').classList.add('open');
+                    document.getElementById('mobile-overlay').classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+                function closeMobileMenu() {
+                    document.getElementById('mobile-menu').classList.remove('open');
+                    document.getElementById('mobile-overlay').classList.remove('open');
+                    document.body.style.overflow = '';
+                }
 
-        // Leaflet Map
+                // Leaflet Map
         // Initialize Leaflet Map
         var map = L.map('map', { scrollWheelZoom: false }).setView([-8.203806, 113.702636], 15);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -419,6 +419,9 @@
             }, 3000);
         }
     </script>
+<!-- Vercel Analytics & Speed Insights -->
+<script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+<script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
 </body>
 
 </html>
