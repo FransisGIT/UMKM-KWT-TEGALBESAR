@@ -25,7 +25,7 @@
     <meta name="geo.placename" content="Sukoharjo" />
     <meta name="geo.position" content="-8.203806;113.702636" />
     <meta name="ICBM" content="-8.203806, 113.702636" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jamukwt-nusantara.com/" />
@@ -39,7 +39,7 @@
     <meta property="og:image:alt" content="Jamu KWT Nusantara - Ramuan Herbal Tradisional" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="KWT Nusantara" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://jamukwt-nusantara.com/" />
@@ -47,7 +47,7 @@
     <meta name="twitter:description"
         content="Jamu tradisional berkualitas dari bahan alami pilihan. Kunyit Asam, Beras Kencur, jamu serbuk, kapsul & rempah segar." />
     <meta name="twitter:image" content="https://placehold.co/1200x630/5a7247/ffffff?text=Jamu+KWT+Nusantara" />
-    
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
         {
@@ -221,23 +221,26 @@
 
         .mySwiper .swiper-button-next,
         .mySwiper .swiper-button-prev {
-            color: rgba(255, 255, 255, 0.7);
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            width: 48px;
+            height: 48px;
+            background: #3d5a30;
             border-radius: 50%;
-            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
         .mySwiper .swiper-button-next:hover,
         .mySwiper .swiper-button-prev:hover {
-            color: white;
-            background: rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+            background: #5a7247;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
         }
 
         .mySwiper .swiper-button-next::after,
         .mySwiper .swiper-button-prev::after {
-            font-size: 14px;
+            font-size: 18px !important;
+            font-weight: bold;
+            color: #ffffff;
         }
 
         /* AOS custom animations */
@@ -480,10 +483,10 @@
                     </div>
                 </div>
                 <div
-                    class="swiper-button-next !text-white/70 hover:!text-white !w-11 !h-11 !bg-black/20 hover:!bg-black/40 rounded-full backdrop-blur-sm transition-all after:!text-sm">
+                    class="swiper-button-next">
                 </div>
                 <div
-                    class="swiper-button-prev !text-white/70 hover:!text-white !w-11 !h-11 !bg-black/20 hover:!bg-black/40 rounded-full backdrop-blur-sm transition-all after:!text-sm">
+                    class="swiper-button-prev">
                 </div>
             </div>
         </div>
@@ -725,9 +728,8 @@
         });
     </script>
     <script>lucide.createIcons();</script>
-<!-- Vercel Analytics & Speed Insights -->
+<!-- Vercel Analytics -->
 <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
-<script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
 </body>
 
 </html>
