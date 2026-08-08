@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/build/
 
-Sitemap: https://jamukwt-nusantara.com/sitemap.xml
+Sitemap: https://djamusitaraherba.example/sitemap.xml
