@@ -223,11 +223,11 @@
         .mySwiper .swiper-button-next,
         .mySwiper .swiper-button-prev {
             color: var(--jamu-primary);
-            width: 48px;
-            height: 48px;
+            width: 36px;
+            height: 36px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
             border: 1px solid rgba(0,0,0,0.06);
         }
 
@@ -235,14 +235,14 @@
         .mySwiper .swiper-button-prev:hover {
             color: var(--jamu-primary);
             background: #ffffff;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.10);
             transform: translateY(-1px);
         }
 
         .mySwiper .swiper-button-next::after,
         .mySwiper .swiper-button-prev::after {
-            font-size: 18px !important;
-            font-weight: bold;
+            font-size: 14px !important;
+            font-weight: 700;
             color: var(--jamu-primary);
         }
 
@@ -327,6 +327,14 @@
                             onmouseover="this.style.backgroundColor='var(--jamu-primary-dark)'"
                             onmouseout="this.style.backgroundColor='var(--jamu-primary)'">
                             <i data-lucide="phone" class="w-4 h-4"></i> Hubungi Kami
+                        </a>
+                        <!-- Mobile visible button -->
+                        <a href="kontak.html"
+                           class="inline-flex lg:hidden items-center gap-2 px-3 py-2 rounded-full text-white text-sm font-semibold transition-all duration-200"
+                           style="background-color: var(--jamu-primary); box-shadow: 0 3px 10px rgba(90,114,71,0.25); margin-left:8px;"
+                           onmouseover="this.style.backgroundColor='var(--jamu-primary-dark)'"
+                           onmouseout="this.style.backgroundColor='var(--jamu-primary)'">
+                           <i data-lucide="phone" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>

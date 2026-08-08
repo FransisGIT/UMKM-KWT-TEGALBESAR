@@ -189,6 +189,12 @@
                             style="background-color:var(--jamu-primary);box-shadow:0 4px 14px rgba(90,114,71,0.3);">
                             <i data-lucide="phone" class="w-4 h-4"></i> Hubungi Kami
                         </a>
+                        <!-- Mobile visible button -->
+                        <a href="kontak.html"
+                           class="inline-flex lg:hidden items-center gap-2 px-3 py-2 rounded-full text-white text-sm font-semibold transition-all duration-200"
+                           style="background-color: var(--jamu-primary); box-shadow: 0 3px 10px rgba(90,114,71,0.25); margin-left:8px;">
+                           <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -293,7 +299,7 @@
 
                 <!-- Product 2: (removed per request) -->
                 <!-- Kencur was removed and will not be displayed -->
-                
+
                 <!-- Product 3: Teh Rempah Seger Waras -->
                 <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md" data-category="teh" data-aos="fade-up"
                     data-aos-delay="200">
@@ -387,10 +393,12 @@
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/62859184075985" target="_blank"
-        class="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-        style="z-index:9998!important;background-color:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.4);">
+    <a href="https://wa.me/62859184075985" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-10 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+        style="z-index: 9998 !important; background-color: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4);">
         <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+        <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-ping"></span>
+        <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full border-2 border-white"></span>
     </a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
