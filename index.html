@@ -222,26 +222,28 @@
 
         .mySwiper .swiper-button-next,
         .mySwiper .swiper-button-prev {
-            color: #ffffff;
+            color: var(--jamu-primary);
             width: 48px;
             height: 48px;
-            background: #3d5a30;
+            background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.06);
         }
 
         .mySwiper .swiper-button-next:hover,
         .mySwiper .swiper-button-prev:hover {
-            color: #ffffff;
-            background: #5a7247;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            color: var(--jamu-primary);
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            transform: translateY(-1px);
         }
 
         .mySwiper .swiper-button-next::after,
         .mySwiper .swiper-button-prev::after {
             font-size: 18px !important;
             font-weight: bold;
-            color: #ffffff;
+            color: var(--jamu-primary);
         }
 
         /* AOS custom animations (standardized to fade-up; removed unused fade-scale) */
